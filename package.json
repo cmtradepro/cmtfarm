@@ -56,5 +56,9 @@
     "trailingComma": "all",
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/cmtradepro/cmtfarm.git",
+  "author": "cmtradepro <admin@cmtrade.pro>",
+  "license": "MIT"
 }
