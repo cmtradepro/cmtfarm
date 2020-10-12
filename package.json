@@ -1,7 +1,7 @@
 {
   "name": "cmtfarm-frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@types/debounce": "^1.2.0",
     "@types/jest": "^26.0.9",
