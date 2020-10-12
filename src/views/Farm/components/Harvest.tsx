@@ -27,18 +27,18 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
           <StyledCardHeader>
             {/* <CardIcon><img src={Lua} alt="LUA Reward"/></CardIcon> */}
             <StyledValue>
-              <Label text="LUA Reward" />
+              <Label text="REWARDS" />
               <br/>
               <Value value={getBalanceNumber(earnings)}/>
               <br/>
-              <div style={{fontSize: 13, color: 'rgb(255,152,0,0.7)'}}>During the first 8 weeks since launch, <b>25% of your earned LUA</b> is available to <b>unlock immediately</b></div>
-              <div style={{marginTop: 10, fontSize: 13, color: 'rgb(255,152,0,0.7)'}}>Beginning week 17 from launch, the remaining <b>75% will be unlocked</b> linearly every block <b>over 1 year</b>.</div>
+              <div style={{fontSize: 13, color: 'rgb(255,152,0,0.7)'}}>During the first 100,000, enjoy <b>10x more rewards!</b></div>
+              <div style={{marginTop: 10, fontSize: 13, color: 'rgb(255,152,0,0.7)'}}>Afterwards, rewards multiplier will be set to <b>default</b> value, additional event multipliers will be decided on an event basis based on <b>community governance</b>.</div>
             </StyledValue>
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting LUA' : 'Harvest'}
+              text={pendingTx ? 'Collecting your rewards' : 'Harvest'}
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()

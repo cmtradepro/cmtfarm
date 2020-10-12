@@ -74,7 +74,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
       tokenName={tokenName}
     />,
   )
-
+  /*
   const handleApprove = useCallback(async () => {
     try {
       setRequestedApproval(true)
@@ -86,7 +86,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
     } catch (e) {
       console.log(e)
     }
-  }, [onApprove, setRequestedApproval])
+  }, [onApprove, setRequestedApproval]) */
 
   var shareOfPool = 0
 
@@ -111,7 +111,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
           <StyledCardHeader>
             {/* <CardIcon><img src={Luas} alt="LUA Reward"/></CardIcon> */}
             <StyledValue>
-              <Label text={`Tokens Staked`} />
+              <Label text={`STAKED`} />
               <br/>
               <ValueStyled>{getBalanceNumber(stakedBalance).toFixed(8)}</ValueStyled>
               <br/>
@@ -132,8 +132,8 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
             {!allowance.toNumber() ? (
               <Button
                 disabled={requestedApproval}
-                onClick={handleApprove}
-                text={requestedApproval ? 'Approving' : `Approve ${tokenName}`}
+                /*onClick={handleApprove} */
+                text={requestedApproval ? 'Approving' : `Approve`}
               />
             ) : (
               <>
