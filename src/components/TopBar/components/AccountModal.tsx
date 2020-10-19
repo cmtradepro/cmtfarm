@@ -40,6 +40,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   const sushi = useSushi()
   const sushiBalance = useTokenBalance(getSushiAddress(sushi))
+  const cmtBalance = useTokenBalance("0x17258ca8dabbfBdcB969D108A016aB4cb93B74e9")
   const canUnlock = useCanUnlockAmount()
   const lockAmount = useLockBalance()
   const stakedFarms = useAllStakedFarms();
@@ -73,40 +74,29 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
                                     <Row>
                                         <Col className="col-5">
                                             <TextMin>
-                                                Balance <img src={IconView} alt="View"/>
+                                                xCMT <img src={IconView} alt="View"/>
                                             </TextMin>
                                             <TextMedium>
                                                 <strong>{parseFloat(getBalanceNumber(sushiBalance).toFixed(4)).toLocaleString('en-US')}</strong>
+                                                <span>xCMT</span>
+                                            </TextMedium>
+                                            {/* <TextMin2>
+                                                ~795,6 $
+                                            </TextMin2> */}
+                                        </Col>
+                                        <Col className="col-5">
+                                            <TextMin>
+                                                CMT <img src={IconView} alt="View"/>
+                                            </TextMin>
+                                            <TextMedium>
+                                                <strong>{parseFloat(getBalanceNumber(cmtBalance).toFixed(4)).toLocaleString('en-US')}</strong>
                                                 <span>CMT</span>
                                             </TextMedium>
                                             {/* <TextMin2>
                                                 ~795,6 $
                                             </TextMin2> */}
                                         </Col>
-                                        <Col className="col-7">
-                                            <TextMin>
-                                                Locked
-                                            </TextMin>
-                                            {!lockAmount.isGreaterThan(0) &&
-                                                <TextMedium>
-                                                    <div><i>no locked</i></div>
-                                                </TextMedium>
-                                            }
-                                            {lockAmount.isGreaterThan(0) &&
-                                                <TextMedium>
-                                                    <strong>{parseFloat(getBalanceNumber(canUnlock).toFixed(4)).toLocaleString('en-US')}</strong>
-                                                    <span>/{parseFloat(getBalanceNumber(lockAmount).toFixed(4)).toLocaleString('en-US')}</span>
-                                                    <ReleaseButton
-                                                        disabled={!canUnlock.isGreaterThan(0) || pendingTx}
-                                                        onClick={async () => {
-                                                            setPendingTx(true)
-                                                            await onUnlock()
-                                                            setPendingTx(false)
-                                                        }}
-                                                    >{pendingTx ? 'Releasing' : 'Release'}</ReleaseButton>
-                                                </TextMedium>
-                                            }
-                                        </Col>
+                                      
                                     </Row>
                                 </BoxItem>
                             </Col>

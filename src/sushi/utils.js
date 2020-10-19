@@ -32,11 +32,19 @@ export const getSushiAddress = (sushi) => {
   return sushi && sushi.sushiAddress
 }
 
+export const getXcmtAddress = (xcmt) => {
+  return xcmt && xcmt.XcmtAddress
+}
+
 export const getMasterChefContract = (sushi) => {
   return sushi && sushi.contracts && sushi.contracts.masterChef
 }
 export const getSushiContract = (sushi) => {
   return sushi && sushi.contracts && sushi.contracts.sushi
+}
+
+export const getXcmtContract = (xcmt) => {
+  return xcmt && xcmt.contracts && xcmt.contracts.xcmt
 }
 
 export const getFarms = (sushi) => {
@@ -58,6 +66,7 @@ export const getFarms = (sushi) => {
           token2Contract,
           isHot,
           isNew,
+          isTba,
           lpAddress,
           lpContract,
           protocal,
@@ -80,6 +89,7 @@ export const getFarms = (sushi) => {
           symbolShort,
           isHot,
           isNew,
+          isTba,
           tokenContract,
           earnToken: 'xcmt',
           earnTokenAddress: sushi.contracts.sushi.options.address,
@@ -187,6 +197,12 @@ export const approve = async (lpContract, masterChefContract, account) => {
 export const getSushiSupply = async (sushi) => {
   return new BigNumber(
     await UnknownBlock(sushi.contracts.sushi._address, 'totalSupply():(uint256)', [], true)
+  )
+}
+
+export const getXcmtSupply = async (xcmt) => {
+  return new BigNumber(
+    await UnknownBlock(xcmt.contracts.xcmt._address, 'totalSupply():(uint256)', [], true)
   )
 }
 

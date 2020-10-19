@@ -45,12 +45,13 @@ export const addressMap = {
 // TODO: change the address & set LP pool
 export const contractAddresses = {
   sushi: {
+    1: '0x2f3De6B0a73d965f810864E3686c1c8ea634c10E',
+  },
+  cmt: {
     1: '0x17258ca8dabbfBdcB969D108A016aB4cb93B74e9',
-    99: '0x9FB56E17EF76Eb21d89d2Ec73058245844e70E3d',
   },
   masterChef: {
     1: '0xb67D7a6644d9E191Cac4DA2B88D6817351C7fF62',
-    99: '0xA49D353dd804f516bcd500D1Dd6eE72675CF498d',
   }
 }
 
@@ -100,32 +101,6 @@ export const supportedPools = [
     addLiquidityLink: 'https://app.uniswap.org/#/add/0x17258ca8dabbfBdcB969D108A016aB4cb93B74e9/ETH'
   },
   {
-    pid: 0,
-    lpAddresses: {
-      1: '0xd3d2e2692501a5c9ca623199d38826e513033a17',
-    },
-    tokenAddresses: {
-      1: '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984',
-    },
-    token2Addresses: {
-      1: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
-    },
-    name: 'UNI - ETH',
-    symbol: 'UNI-ETH UNI-V2 LP',
-    symbolShort: 'UNI-ETH',
-    description: `Deposit xCMT-ETH UNI-V2 LP Earn xCMT`,
-    tokenSymbol: 'UNI',
-    token2Symbol: 'ETH',
-    icon: 'https://uniswap.info/static/media/logo_white.edb44e56.svg',
-    icon2: 'https://s2.coinmarketcap.com/static/img/coins/128x128/1027.png',
-    isHot: true,
-    isNew: false,
-    protocal: 'UniSwap',
-    iconProtocal: 'https://uniswap.info/static/media/logo_white.edb44e56.svg',
-    pairLink: 'https://uniswap.info/pair/0xd3d2e2692501a5c9ca623199d38826e513033a17',
-    addLiquidityLink: 'https://app.uniswap.org/#/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984/ETH'
-  },
-  {
     pid: 1,
     lpAddresses: {
       1: '',
@@ -145,11 +120,39 @@ export const supportedPools = [
     icon: 'https://i.ibb.co/MhjCxDF/XCMT-Full-Color.png',
     icon2: 'https://s2.coinmarketcap.com/static/img/coins/128x128/1027.png',
     isHot: true,
-    isNew: true,
+    isNew: false,
     protocal: 'UniSwap',
     iconProtocal: 'https://uniswap.info/static/media/logo_white.edb44e56.svg',
     pairLink: '',
     addLiquidityLink: 'https://app.uniswap.org/#/add/0x2f3De6B0a73d965f810864E3686c1c8ea634c10E/ETH'
   }, 
+  {
+    pid: 0,
+    lpAddresses: {
+      1: '',
+    },
+    tokenAddresses: {
+      1: '',
+    },
+    token2Addresses: {
+      1: ''
+    },
+    name: 'TBA',
+    symbol: '',
+    symbolShort: '',
+    description: `To be voted by the CMT community, added after the first 100,000 blocks`,
+    tokenSymbol: '',
+    token2Symbol: '',
+    icon: '',
+    icon2: '',
+    isHot: false,
+    isNew: true,
+    isTBA: true,
+    protocal: 'UniSwap',
+    iconProtocal: 'https://uniswap.info/static/media/logo_white.edb44e56.svg',
+    pairLink: 'https://uniswap.info/pair/0xd3d2e2692501a5c9ca623199d38826e513033a17',
+    addLiquidityLink: 'https://app.uniswap.org/#/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984/ETH'
+  },
+
 
 ]

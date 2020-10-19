@@ -6,7 +6,7 @@ import config from '../config'
 import useSushi from './useSushi'
 import { getSushiCirculatingSupply } from '../sushi/utils'
 import BigNumber from 'bignumber.js'
-// import debounce from 'debounce'
+import debounce from 'debounce'
 
 var CACHE = {
   time: parseInt(localStorage.getItem('CACHE_useSushiCirculatingSupply_time') || '0'),

@@ -8,19 +8,19 @@ const Nav: React.FC = () => {
         target="_blank"
         href=""
       >
-        The Farm
+        MasterFarmer
       </StyledLink>
       <StyledLink
         target="_blank"
         href="https://etherscan.io/token/0x17258ca8dabbfBdcB969D108A016aB4cb93B74e9"
       >
-        CMT Token
+        CMT
       </StyledLink>
       <StyledLink
         target="_blank"
         href="https://etherscan.io/token/0x2f3De6B0a73d965f810864E3686c1c8ea634c10E"
       >
-        xCMT Token
+        xCMT
       </StyledLink>
       <StyledLink target="_blank" href="https://github.com/cmtradepro">
         Github

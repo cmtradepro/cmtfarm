@@ -75,23 +75,14 @@ const Farm: React.FC = () => {
       <PageHeader
         icon={
           <div style={{display: 'flex'}}>
-            <img src={icon} height="80" />&nbsp;<img src={icon2} height="80" />
+            <img src={icon} height="80" />&nbsp;<img src={icon2} height="75" />
           </div>
         }
         subtitle={description}
         title={name}
       />
       <StyledFarm>
-        <StyledApyWrap>
-          <Apy 
-            pid={pid} 
-            lpTokenAddress={lpTokenAddress} 
-            symbolShort={symbolShort}
-            tokenSymbol={tokenSymbol}
-            token2Symbol={token2Symbol}/>
-        </StyledApyWrap>
-        <Spacer size="md"/>
-        <StyledHeading>Your staking</StyledHeading>
+        <StyledHeading>Your Farm</StyledHeading>
         {account &&
           <StyledCardsWrapper>
             <StyledCardWrapper>

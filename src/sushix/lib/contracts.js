@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js/bignumber'
 import ERC20Abi from './abi/erc20.json'
 import MasterChefAbi from './abi/masterchef.json'
-import XSushiAbi from './abi/xsushi.json'
+import SushixAbi from './abi/sushix.json'
 import UNIV2PairAbi from './abi/uni_v2_lp.json'
 
 import {
@@ -21,7 +21,7 @@ export class Contracts {
     this.defaultGas = options.defaultGas
     this.defaultGasPrice = options.defaultGasPrice
 
-    this.xsushi = new this.web3.eth.Contract(XSushiAbi)
+    this.sushix = new this.web3.eth.Contract(SushixAbi)
     this.masterChef = new this.web3.eth.Contract(MasterChefAbi)
 
     this.pools = supportedPools.map((pool) =>
@@ -46,7 +46,7 @@ export class Contracts {
       else console.error('Contract address not found in network', networkId)
     }
 
-    setProvider(this.xsushi, contractAddresses.xsushi[networkId])
+    setProvider(this.sushix, contractAddresses.sushix[networkId])
     setProvider(this.masterChef, contractAddresses.masterChef[networkId])
 
     this.pools.forEach(
@@ -59,7 +59,7 @@ export class Contracts {
   }
 
   setDefaultAccount(account) {
-    this.xsushi.options.from = account
+    this.sushix.options.from = account
     this.masterChef.options.from = account
   }
 }

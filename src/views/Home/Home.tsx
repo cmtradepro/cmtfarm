@@ -6,7 +6,6 @@ import Page from '../../components/Page'
 // import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 import Balances from './components/Balances'
-import Balances2 from './components/Balances2'
 import CustomCountDown from './components/CustomCountDown'
 import Icon_Tip from '../../assets/img/pro-tip-icon.svg'
 import { START_REWARD_AT_BLOCK } from '../../sushi/lib/constants'
@@ -29,10 +28,10 @@ const Home: React.FC = () => {
             </StyledLogo>
         </SpacerRes>
         <Spacer size="lg" />
-        <div style={{fontWeight: 'bold', fontSize: 22, color: '#ffffff'}}>
-            CMT has a total supply of only <span style={{color: '#4caf50', fontSize: 30}}> 650000 </span>
+        <div style={{fontWeight: 'bold', fontSize: 18, color: '#ffffff'}}>
+            Farm xCMT for limited edition NFTs and more! 
             <br />
-            xCMT has a total supply of only <span style={{color: '#4caf50', fontSize: 30}}> 30000 </span>
+            <br />
         </div>
         {block < launchBlock && atDate && <>
             <Spacer size="sm" />
@@ -50,9 +49,6 @@ const Home: React.FC = () => {
                 <Balances />
             </Container>
             <br />
-            <Container>
-                <Balances2 />
-            </Container>
             <Spacer size="md" />
             <div>
                 <ReadMore href="https://t.me/cmtmoon" target="__blank"> 👉&nbsp;&nbsp;Read The Announcement&nbsp;&nbsp;👈</ReadMore>

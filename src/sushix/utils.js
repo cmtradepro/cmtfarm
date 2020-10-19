@@ -25,23 +25,31 @@ export async function UnknownBlock(address, method, params, cache) {
   return data.data
 }
 
-export const getMasterChefAddress = (xsushi) => {
-  return xsushi && xsushi.masterChefAddress
+export const getMasterChefAddress = (sushix) => {
+  return sushix && sushix.masterChefAddress
 }
-export const getXSushiAddress = (xsushi) => {
-  return xsushi && xsushi.xsushiAddress
-}
-
-export const getMasterChefContract = (xsushi) => {
-  return xsushi && xsushi.contracts && xsushi.contracts.masterChef
-}
-export const getXSushiContract = (xsushi) => {
-  return xsushi && xsushi.contracts && xsushi.contracts.xsushi
+export const getSushixAddress = (sushix) => {
+  return sushix && sushix.sushixAddress
 }
 
-export const getFarms = (xsushi) => {
-  return xsushi
-    ? xsushi.contracts.pools.map(
+export const getXcmtAddress = (xcmt) => {
+  return xcmt && xcmt.XcmtAddress
+}
+
+export const getMasterChefContract = (sushix) => {
+  return sushix && sushix.contracts && sushix.contracts.masterChef
+}
+export const getSushixContract = (sushix) => {
+  return sushix && sushix.contracts && sushix.contracts.sushix
+}
+
+export const getXcmtContract = (xcmt) => {
+  return xcmt && xcmt.contracts && xcmt.contracts.xcmt
+}
+
+export const getFarms = (sushix) => {
+  return sushix
+    ? sushix.contracts.pools.map(
         ({
           pid,
           name,
@@ -58,6 +66,7 @@ export const getFarms = (xsushi) => {
           token2Contract,
           isHot,
           isNew,
+          isTba,
           lpAddress,
           lpContract,
           protocal,
@@ -80,9 +89,10 @@ export const getFarms = (xsushi) => {
           symbolShort,
           isHot,
           isNew,
+          isTba,
           tokenContract,
           earnToken: 'xcmt',
-          earnTokenAddress: xsushi.contracts.xsushi.options.address,
+          earnTokenAddress: sushix.contracts.sushix.options.address,
           icon,
           icon2,
           description,
@@ -169,10 +179,10 @@ export const getLPValue = async (
 }
 
 export const getLPTokenStaked = async (
-  xsushi,
+  sushix,
   lpContract,
 ) => {
-  var chef = getMasterChefContract(xsushi)
+  var chef = getMasterChefContract(sushix)
   return new BigNumber(
     await UnknownBlock(lpContract._address, 'balanceOf(address):(uint256)', [chef.options.address], true)
   )
@@ -184,26 +194,26 @@ export const approve = async (lpContract, masterChefContract, account) => {
     .send({ from: account })
 }
 
-export const getXSushiSupply = async (xsushi) => {
+export const getSushixSupply = async (sushix) => {
   return new BigNumber(
-    await UnknownBlock(xsushi.contracts.xsushi._address, 'totalSupply():(uint256)', [], true)
+    await UnknownBlock(sushix.contracts.sushix._address, 'totalSupply():(uint256)', [], true)
   )
 }
 
-export const getXSushiCirculatingSupply = async (xsushi) => {
-  var chef = getMasterChefContract(xsushi)
+export const getSushixCirculatingSupply = async (sushix) => {
+  var chef = getMasterChefContract(sushix)
   var a = new BigNumber(
-    await UnknownBlock(xsushi.contracts.xsushi._address, 'circulatingSupply():(uint256)', [], true)
+    await UnknownBlock(sushix.contracts.sushix._address, 'circulatingSupply():(uint256)', [], true)
   )
 
   var b = new BigNumber(
-    await UnknownBlock(xsushi.contracts.xsushi._address, 'balanceOf(address):(uint256)', [chef._address], true)
+    await UnknownBlock(sushix.contracts.sushix._address, 'balanceOf(address):(uint256)', [chef._address], true)
   )
   return a.minus(b)
 }
 
-export const getNewRewardPerBlock = async (xsushi, pid1 = 0) => {
-  var chef = getMasterChefContract(xsushi)
+export const getNewRewardPerBlock = async (sushix, pid1 = 0) => {
+  var chef = getMasterChefContract(sushix)
   return new BigNumber(
     await UnknownBlock(chef._address, 'getNewRewardPerBlock(uint256):(uint256)', [pid1], true)
   )
@@ -270,21 +280,21 @@ export const redeem = async (masterChefContract, account) => {
   }
 }
 
-export const getCanUnlockLua = async (xsushi, account) => {
-  var lua = getXSushiContract(xsushi)
+export const getCanUnlockLua = async (sushix, account) => {
+  var lua = getSushixContract(sushix)
 
   return new BigNumber(await lua.methods.canUnlockAmount(account).call())
 }
 
 
-export const getLockOf = async (xsushi, account) => {
-  var lua = getXSushiContract(xsushi)
+export const getLockOf = async (sushix, account) => {
+  var lua = getSushixContract(sushix)
 
   return new BigNumber(await lua.methods.lockOf(account).call())
 }
 
-export const unlock = async (xsushi, account) => {
-  var lua = getXSushiContract(xsushi)
+export const unlock = async (sushix, account) => {
+  var lua = getSushixContract(sushix)
   return lua.methods
     .unlock()
     .send({ from: account })

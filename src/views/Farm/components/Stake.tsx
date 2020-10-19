@@ -74,7 +74,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
       tokenName={tokenName}
     />,
   )
-  /*
+  
   const handleApprove = useCallback(async () => {
     try {
       setRequestedApproval(true)
@@ -86,7 +86,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
     } catch (e) {
       console.log(e)
     }
-  }, [onApprove, setRequestedApproval]) */
+  }, [onApprove, setRequestedApproval])
 
   var shareOfPool = 0
 
@@ -115,10 +115,6 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
               <br/>
               <ValueStyled>{getBalanceNumber(stakedBalance).toFixed(8)}</ValueStyled>
               <br/>
-              <StyledContent>
-                <div>{totalToken.toLocaleString('en-US')}<span style={{fontSize: 10}}> {tokenSymbol}</span></div>
-                <div>{totalToken2.toLocaleString('en-US')}<span style={{fontSize: 10}}> {token2Symbol}</span></div>
-              </StyledContent>
             </StyledValue>
           </StyledCardHeader>
           {totalStake && stakedBalance &&
@@ -132,8 +128,8 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName, tokenSymbol, 
             {!allowance.toNumber() ? (
               <Button
                 disabled={requestedApproval}
-                /*onClick={handleApprove} */
-                text={requestedApproval ? 'Approving' : `Approve`}
+                onClick={handleApprove}
+                text={requestedApproval ? 'Approving' : `Approve UNI-V2 LP`}
               />
             ) : (
               <>

@@ -6,7 +6,7 @@ import { EVM } from './lib/evm.js'
 
 import { contractAddresses } from './lib/constants'
 
-export class XSushi {
+export class Sushix {
   constructor(provider, networkId, testing, options) {
     var realProvider
     if (typeof provider === 'string') {
@@ -36,7 +36,7 @@ export class XSushi {
       this.web3.eth.defaultAccount = options.defaultAccount
     }
     this.contracts = new Contracts(realProvider, networkId, this.web3, options)
-    this.xsushiAddress = contractAddresses.xsushi[networkId]
+    this.sushixAddress = contractAddresses.sushix[networkId]
     this.masterChefAddress = contractAddresses.masterChef[networkId]
   }
 

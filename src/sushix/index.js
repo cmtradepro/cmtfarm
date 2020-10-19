@@ -6,5 +6,5 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
-export { XSushi } from './XSushi.js'
+export { Sushix } from './Sushix.js'
 export { Web3, BigNumber }
