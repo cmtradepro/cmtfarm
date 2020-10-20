@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { UseWalletProvider } from 'use-wallet'
 import DisclaimerModal from './components/DisclaimerModal'
@@ -13,8 +13,6 @@ import useModal from './hooks/useModal'
 import theme from './theme'
 import Farms from './views/Farms'
 import Home from './views/Home'
-import Stake from './views/Stake'
-import config from './config'
 
 const App: React.FC = () => {
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -29,7 +27,7 @@ const App: React.FC = () => {
 
   return (
     <Providers>
-      {/* <Router> */}
+      <Router>
         <TopBar onPresentMobileMenu={handlePresentMobileMenu} />
         <MobileMenu onDismiss={handleDismissMobileMenu} visible={mobileMenu} />
         <Switch>
@@ -39,11 +37,8 @@ const App: React.FC = () => {
           <Route path="/farms">
             <Farms />
           </Route>
-          {/* <Route path="/staking">
-            <Stake />
-          </Route> */}
         </Switch>
-      {/* </Router> */}
+      </Router>
       <Disclaimer />
     </Providers>
   )
@@ -53,17 +48,15 @@ const Providers: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <UseWalletProvider
-        chainId={config.chainId}
+        chainId={1}
         connectors={{
-          walletconnect: { rpcUrl: config.rpc },
+          walletconnect: { rpcUrl: 'https://mainnet.eth.aragon.network/' },
         }}
       >
         <SushiProvider>
           <TransactionProvider>
             <FarmsProvider>
-              <Router>
               <ModalsProvider>{children}</ModalsProvider>
-              </Router>
             </FarmsProvider>
           </TransactionProvider>
         </SushiProvider>
